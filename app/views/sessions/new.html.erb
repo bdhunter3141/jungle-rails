@@ -1,0 +1,21 @@
+<h1>Login</h1>
+<hr>
+
+<div class="row">
+    <div class="col-sm-6 col-sm-offset-1">
+      <%= form_tag '/login' do %>
+
+        <div class="form-group">
+          <%= label_tag :email %>
+          <p class:"form-control"><%= email_field_tag :email %></p>
+        </div>
+
+        <div class="form-group">
+          <%= label_tag :password %>
+          <p class:"form-control"><%= password_field_tag :password %></p>
+        </div>
+
+        <%= submit_tag 'Login!', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
