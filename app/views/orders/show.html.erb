@@ -6,6 +6,25 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
+    <div id="email-message">
+      <p>An email will be sent to <%= @order.email %> with your receipt.</p>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="2">Your Products</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @order %>
+      </tbody>
+    </table>
   </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
