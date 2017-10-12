@@ -133,4 +133,64 @@ cat3.products.create!({
 })
 
 
+## REVIEWS
+
+product1 = Product.find(11)
+product2 = Product.find(10)
+product3 = Product.find(9)
+
+product1.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
+product1.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
+product1.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
+product2.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
+product2.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
+product2.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
+product3.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
+product3.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
+product3.reviews.create!({
+  user_id: Faker::Number.between(1, 5),
+  description: Faker::Hipster.paragraph(4),
+  rating: Faker::Number.between(1, 5)
+})
+
 puts "DONE!"
