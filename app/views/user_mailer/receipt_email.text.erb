@@ -1,0 +1,19 @@
+
+Here is your order receipt!
+===============================================
+
+<% @order.line_items.each do |item| %>
+
+<%= item.product.name %>:
+    <%= item.product.description %>
+    Quantity: <%= item.quantity %>
+    Price: <%= humanized_money_with_symbol item.total_price_cents %>
+
+<% end %>
+
+TOTAL:
+<%= humanized_money_with_symbol @order.total_cents %>
+
+Thank you for shopping with us, and have a fantastic day!
+
+- Jungle Staff

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Here is your order receipt!</h1>
+
+  <% @order.line_items.each do |item| %>
+    <h3><%= item.product.name %>:</h3>
+    <p><%= item.product.description %></p>
+    <p>Quantity: <%= item.quantity %></p>
+    <p>Price: <%= humanized_money_with_symbol item.total_price_cents %></p>
+    <hr>
+  <% end %>
+
+  <h4>TOTAL:</h4>
+  <p><%= humanized_money_with_symbol @order.total_cents %></p>
+
+  <p>Thank you for shopping with us, and have a fantastic day!</p>
+
+  <p>- Jungle Staff</p>
+
+  </body>
+</html>
