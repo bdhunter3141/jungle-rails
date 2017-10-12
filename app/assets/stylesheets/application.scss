@@ -5,6 +5,7 @@
 
 // App
 @import "products";
+@import "cart";
 
 // Global
 body {
@@ -16,10 +17,4 @@ body {
 #welcome-message:hover, #welcome-message {
   color: #777;
   font-style: italic;
-}
-
-// Email Message on Cart Checkout
-
-#email-message {
-  margin-top: 20px;
 }

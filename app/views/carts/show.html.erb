@@ -4,50 +4,65 @@
     <h1>My Cart</h1>
   </header>
 
-  <div class="panel panel-default items">
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th colspan="2">Product</th>
-          <th>Unit Price</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @cart_total = 0 %>
-        <% cart.each do |product_id, details| %>
-          <%= render 'item', product_id: product_id, details: details %>
-        <% end %>
-      </tbody>
-      <tfoot>
-        <tr>
-          <th colspan="4">
-            TOTAL:
-          </th>
-          <th>
-            <%= @cart_total %>
-          </th>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
+  <% if cart.empty? %>
 
-  <div class="row">
-    <div class="col-xs-12">
-      <%= form_tag orders_path do %>
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-amount="<%= @cart_total * 100 %>"
-          data-name="Jungle"
-          data-description="Khurram Virani's Jungle Order"
-          data-locale="auto"
-          data-email="kvirani@gmail.com"
-          data-currency="cad">
-        </script>
-      <% end %>
+    <div id="empty-cart-flex">
+      <div>
+        <h1 id="empty-cart">Oh no...</h1>
+        <p>It looks like you don't have anything in your cart yet!</p>
+        <p>Check out all of the amazing items that we have on our <%= link_to 'homepage', '/' %> and we will be waiting here when you've found something that you like.
+      </div>
+      <div>
+        <%= image_tag "confused-snail.png" %>
+      </div>
     </div>
-  </div>
+
+  <% else %>
+    <div class="panel panel-default items">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th colspan="2">Product</th>
+            <th>Unit Price</th>
+            <th>Quantity</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_total = 0 %>
+          <% cart.each do |product_id, details| %>
+            <%= render 'item', product_id: product_id, details: details %>
+          <% end %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th colspan="4">
+              TOTAL:
+            </th>
+            <th>
+              <%= @cart_total %>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <%= form_tag orders_path do %>
+          <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-amount="<%= @cart_total * 100 %>"
+            data-name="Jungle"
+            data-description="Khurram Virani's Jungle Order"
+            data-locale="auto"
+            data-email="kvirani@gmail.com"
+            data-currency="cad">
+          </script>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 
 </section>
