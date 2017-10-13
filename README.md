@@ -1,6 +1,6 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of learning Rails.
+A mini e-commerce application built with Rails 4.2 for purposes of learning Rails. Users can create an account, purchase items, and leave reviews with ratings.
 
 
 ## Setup
@@ -17,7 +17,11 @@ A mini e-commerce application built with Rails 4.2 for purposes of learning Rail
 
 ## Finished Product
 
+!["A screenshot of the product listings page."](https://github.com/bdhunter3141/jungle-rails/blob/master/docs/product-listings.png?raw=true)
 
+!["A screenshot of the individual product's page."](https://github.com/bdhunter3141/jungle-rails/blob/master/docs/product-page.png?raw=true)
+
+!["The reviews for an individual product."](https://github.com/bdhunter3141/jungle-rails/blob/master/docs/product-reviews.png?raw=true)
 
 ## Stripe Testing
 
