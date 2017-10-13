@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
     # If user's login doesn't work, send them back to the login form.
-      redirect_to '/login'
+      @login_fail = 'Oops, something went wrong. Please check your login info and try again.'
+      render '/sessions/new'
     end
   end
 

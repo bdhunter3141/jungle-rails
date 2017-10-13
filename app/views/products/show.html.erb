@@ -26,14 +26,49 @@
       </div>
     </div>
 
+    <% if current_user.present? %>
+      <div class="row">
+        <%= form_for [@product, @review] do |form| %>
+
+        <% if form.object.errors.any? %>
+            <div class="alert alert-danger">
+              <strong>The following errors prevented your review from saving:</strong>
+              <ul>
+                <% form.object.errors.full_messages.each do |error| %>
+                  <li><%= error %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+        <div class="form-group">
+            <%= form.label :description %>
+            <%= form.text_area :description, class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= form.label :rating %>
+            <%= form.select :rating, [1, 2, 3, 4, 5], class: 'form-control' %>
+          </div>
+          <%= form.submit 'Submit Review', class: 'btn btn-primary' %>
+        <% end %>
+
+      </div>
+    <% end %>
+
     <div class="row">
 
-      <% @product.reviews.each do |review| %>
+      <% @product.reviews.reverse_each do |review| %>
+      <% @user = User.find(review.user_id) %>
         <div>
           <hr>
-          <h6>User <%= review.user_id %>'s review:</h6>
+          <h6> <%= @user.first_name %> <%= @user.last_name %>'s review:</h6>
           <p><%= review.description %></p>
-          <p>Final Rating: <%= review.rating %></p>
+          <p>Rating: <%= review.rating %></p>
+          <% if current_user.present? && current_user == @user %>
+            <p><%= link_to 'Delete', product_review_path(@product.id, review.id), method: :delete,
+              data: { confirm: 'Are you sure?' } %></p>
+          <% end %>
         </div>
       <% end %>
 
