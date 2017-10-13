@@ -7,7 +7,9 @@
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
     <div id="email-message">
-      <p>An email will be sent to <%= @order.email %> with your receipt.</p>
+      <% if current_user %>
+        <p>An email will be sent to <%= @order.email %> with your receipt.</p>
+      <% end %>
     </div>
   </div>
 

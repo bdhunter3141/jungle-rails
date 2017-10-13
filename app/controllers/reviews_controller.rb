@@ -32,4 +32,5 @@ class ReviewsController < ApplicationController
       render '/sessions/new'
     end
   end
+
 end

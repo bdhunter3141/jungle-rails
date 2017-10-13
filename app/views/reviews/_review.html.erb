@@ -1,0 +1,23 @@
+<% @product.reviews.reverse_each do |review| %>
+<% @user = User.find(review.user_id) %>
+  <div>
+    <hr>
+    <div class="review-flex">
+      <div class="review-name">
+        <h5> <%= @user.first_name %> <%= @user.last_name %>'s review:</h5>
+        <p>
+          <% review.rating.times do  %>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+        </p>
+        <% if current_user.present? && current_user == @user %>
+          <p><%= link_to 'Delete', product_review_path(@product.id, review.id), method: :delete,
+            data: { confirm: 'Are you sure?' } %></p>
+        <% end %>
+      </div>
+      <div class="review-description">
+        <p><%= review.description %></p>
+      </div>
+    </div
+  </div>
+<% end %>

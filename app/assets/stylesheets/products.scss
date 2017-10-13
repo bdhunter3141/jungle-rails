@@ -84,3 +84,44 @@ main section.products-show {
     }
   }
 }
+
+.review-form {
+  margin: 30px;
+
+  h4 {
+    color: #1c77bd;
+    font-size: 2em;
+  }
+}
+
+.review-text-area {
+  max-width: 50vw;
+}
+
+.review-flex {
+  display: flex;
+
+  .review-name {
+    width: 30%;
+  }
+
+  .review-description {
+    width: 60%;
+  }
+}
+
+@media ( max-width: 845px ) {
+
+  .review-text-area {
+    max-width: 80vw;
+  }
+
+  .review-flex {
+    margin: 10px 20px;
+
+    .review-description {
+      margin-left: 10px;
+    }
+  }
+
+}
