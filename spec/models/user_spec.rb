@@ -74,10 +74,67 @@ RSpec.describe User, type: :model do
       user_errors = @user.errors.full_messages
       expect(user_errors).to include("Email can't be blank")
     end
+
+    it 'validates that password length is at least 5 characters' do
+      @user.password = 'wow'
+      @user.save
+      user_errors = @user.errors.full_messages
+      expect(user_errors).to include("Password is too short (minimum is 5 characters)")
+    end
+  end
+
+  describe '.authenticate_with_credentials' do
+
+    before :each do
+      User.create({
+        first_name: 'Larry',
+        last_name: 'Robertsons',
+        email: 'larry@larryandsons.com',
+        password: 'larry649',
+        password_confirmation: 'larry649'
+        })
+
+      @user_credentials = { email: 'larry@larryandsons.com', password: 'larry649' }
+    end
+
+    it 'checks if user is authenticated' do
+      valid_user = User.authenticate_with_credentials(@user_credentials[:email], @user_credentials[:password])
+      expect(valid_user).to be_truthy
+    end
+
+    it 'validates that user exists' do
+      user = User.authenticate_with_credentials('bob@smithandsons.com', @user_credentials[:password])
+      expect(user).to be_falsey
+    end
+
+    it 'checks that password is valid' do
+      user = User.authenticate_with_credentials(@user_credentials[:email], 'goodpassword123')
+      expect(user).to be_falsey
+    end
+
+    it 'validates that password field is present' do
+      user = User.authenticate_with_credentials(@user_credentials[:email], '')
+      expect(user).to be_falsey
+    end
+
+    it 'validates that email field is present' do
+      user = User.authenticate_with_credentials('', @user_credentials[:password])
+      expect(user).to be_falsey
+    end
+
+    it 'accomodates spaces before user email address' do
+      user = User.authenticate_with_credentials("  #{@user_credentials[:email]}", @user_credentials[:password])
+      expect(user).to be_truthy
+    end
+
+    it 'accomodates spaces after user email address' do
+      user = User.authenticate_with_credentials("#{@user_credentials[:email]}  ", @user_credentials[:password])
+      expect(user).to be_truthy
+    end
+
+    it 'allows user emails to not be case sensitive' do
+      user = User.authenticate_with_credentials('LARRY@larryandsons.com', @user_credentials[:password])
+      expect(user).to be_truthy
+    end
   end
 end
-
-# validates :first_name, presence: true
-# validates :last_name, presence: true
-# validates :email, presence: true, uniqueness: true
-# validates :password_digest, presence: true
