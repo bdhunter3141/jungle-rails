@@ -139,42 +139,48 @@ User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  password_digest: "$2a$10$5/mDPk48tdt7bO.IXGl8t.p9y2V6rXfPBLA0xQpCh3b..."
+  password: "12345678",
+  password_confirmation: "12345678"
   })
 
 User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  password_digest: "$2a$10$5/mDPk48tdt7bO.IXGl8t.p9y2V6rXfPBLA0xQpCh3b..."
+  password: "12345678",
+  password_confirmation: "12345678"
   })
 
 User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  password_digest: "$2a$10$5/mDPk48tdt7bO.IXGl8t.p9y2V6rXfPBLA0xQpCh3b..."
+  password: "12345678",
+  password_confirmation: "12345678"
   })
 
 User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  password_digest: "$2a$10$5/mDPk48tdt7bO.IXGl8t.p9y2V6rXfPBLA0xQpCh3b..."
+  password: "12345678",
+  password_confirmation: "12345678"
   })
 
 User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  password_digest: "$2a$10$5/mDPk48tdt7bO.IXGl8t.p9y2V6rXfPBLA0xQpCh3b..."
+  password: "12345678",
+  password_confirmation: "12345678"
   })
 
 User.create!({
   first_name: Faker::Name.first_name,
   last_name: Faker::Name.last_name,
   email: Faker::Internet.email,
-  password_digest: "$2a$10$5/mDPk48tdt7bO.IXGl8t.p9y2V6rXfPBLA0xQpCh3b..."
+  password: "12345678",
+  password_confirmation: "12345678"
   })
 
 
